@@ -12,7 +12,7 @@ struct ContentView: View {
                     HStack {
                         CalendrierDate(number: "10", days: "LUN", backColor: .white, textColor: UIColor(.black))
                         CalendrierDate(number: "11", days: "MAR", backColor: .white, textColor: UIColor(.black))
-                        CalendrierDate(number: "12", days: "MER", backColor: .white, textColor: UIColor(.black))
+                        CalendrierDate(number: "12", days: "MER", backColor: .blue, textColor: UIColor(.black))
                         CalendrierDate(number: "13", days: "VEN", backColor: .white, textColor: UIColor(.black))
                         CalendrierDate(number: "15", days: "SAM", backColor: .white, textColor: UIColor(.black))
                         CalendrierDate(number: "16", days: "DIM", backColor: .white, textColor: UIColor(.black))
@@ -29,24 +29,15 @@ struct ContentView: View {
                         //liste de cours
                         VStack  {
                             
-                            HStack {
-                                Text("9h35")
-                                    .font((.system(size: 14, weight: .heavy, design: .rounded)))
-                                    .padding(.trailing, 10)
-                                
-                                VStack() {
-                                    Text("SYST1037")
-                                        .font(.system(size: 14, weight: .bold, design: .rounded))
-                                    Text("Analyse des systemes")
-                                        .font(.system(size: 14,
-                                                      weight: .light, design: .default))
-                                        .padding(.trailing, 15)
-                                    
-                                    Image(systemName: "list.dash")
-                                        .resizable()
-                                        .frame(width: 15, height: 18)
-                                }
-                            }
+                            CoursCcnbView(hour: "8h35", codeCourse: "SYST1037", nameCourse: "Analyse des Systemes d'Information")
+                            CoursCcnbView(hour: "9h35", codeCourse: "DATA1054", nameCourse: "Systeme de gestion base de donnees")
+                            CoursCcnbView(hour: "10h35", codeCourse: "PR0G1300", nameCourse: "Programmation Web cote Serveur")
+                            CoursCcnbView(hour: "11h35", codeCourse: "PROG1294", nameCourse: "Programmation Java et  Android")
+                            CoursCcnbView(hour: "12h35", codeCourse: "PROG1250", nameCourse: "Programmation ADO .NET et ASP .NET")
+                            CoursCcnbView(hour: "13h35", codeCourse: "PROG1250", nameCourse: "Programmation orientee objet en C++")
+                            CoursCcnbView(hour: "14h35", codeCourse: "PROG1475", nameCourse: "Programmation en Flutter sous Adnroid")
+                            CoursCcnbView(hour: "15h35", codeCourse: "PROG1147", nameCourse: "Programmation multi-couches")
+                            CoursCcnbView(hour: "16h35", codeCourse: "PROG1296", nameCourse: "Programmation iOS Apple")
                         }
                     }
                         .padding(25)
@@ -113,5 +104,39 @@ struct CalendrierDate: View {
         .padding([.leading, .trailing], 10)
         .background(Color(.white))
         .cornerRadius(15)
+    }
+}
+
+// subview pour mes cours
+struct CoursCcnbView: View {
+    
+    // declaration des variables
+    var hour: String
+    var codeCourse: String
+    var nameCourse: String
+    
+    var body: some View {
+        HStack {
+            Text(self.hour)
+                .font((.system(size: 14, weight: .heavy, design: .rounded)))
+                .frame(width: 46, height: nil, alignment: .leading)
+                .padding(.trailing, 5)
+            
+            VStack(alignment: .leading) {
+                Text(self.codeCourse)
+                    .font(.system(size: 14, weight: .bold, design: .rounded))
+                Text(self.nameCourse)
+                    .font(.system(size: 14,
+                                  weight: .light, design: .default))
+                    .padding(.trailing, 15)
+                
+            }
+            .frame(width: 150, height: nil, alignment: .leading)
+            .padding(.trailing, 15)
+            Image(systemName: "list.dash")
+                .resizable()
+                .frame(width: 15, height: 18)
+        }
+        .padding(.bottom, 15)
     }
 }
